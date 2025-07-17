@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -39,7 +39,7 @@ function Messages() {
           <h2>View Messages</h2>
           <p>Access all the messages from the Contact Us page.</p>
            <div className="d-flex justify-content-center gap-3 mt-3">
-                     <Link to="/Messages"><button className="btn btn-primary">
+                     <Link to="/OrgDashboard"><button className="btn btn-primary">
               View Registrations
             </button></Link>
             <button onClick={handleLogout} className="btn btn-danger">
