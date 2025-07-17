@@ -16,7 +16,7 @@ function Messages() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch('http://localhost:8000/Messages');
+      const res = await fetch('https://techspire-2.onrender.com/Messages');
       const data = await res.json();
       if (data.message === 'success') {
         setMessages(data.data);

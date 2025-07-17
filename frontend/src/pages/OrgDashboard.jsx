@@ -18,7 +18,7 @@ function OrgDashboard() {
 
   const fetchRegistrations = async () => {
     try {
-      const res = await fetch('http://localhost:8000/all-registrations');
+      const res = await fetch('https://techspire-2.onrender.com/all-registrations');
       const data = await res.json();
       if (data.message === 'success') {
         setRegistrations(data.data);

@@ -23,7 +23,7 @@ function Register() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8000/create", {
+      const response = await fetch("https://techspire-2.onrender.com/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -17,7 +17,7 @@ function Check() {
     setRegistrations([]);
 
     try {
-      const res = await fetch('http://localhost:8000/getRegistrations', {
+      const res = await fetch('https://techspire-2.onrender.com/getRegistrations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(query),
