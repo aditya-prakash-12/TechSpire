@@ -87,16 +87,16 @@ function Footer() {
         </div>
       </div>
       <div className="social-links order-first order-lg-last mb-3 mb-lg-0">
-        <a href="/https://x.com/" target='_blank'>
+        <a href="https://x.com/" target='_blank'>
           <i className="bi bi-twitter-x" />
         </a>
-        <a href="/https://www.facebook.com/" target='_blank'>
+        <a href="https://www.facebook.com/" target='_blank'>
           <i className="bi bi-facebook" />
         </a>
-        <a href="/https://www.instagram.com/" target='_blank'>
+        <a href="https://www.instagram.com/" target='_blank'>
           <i className="bi bi-instagram" />
         </a>
-        <a href="/https://in.linkedin.com/" target='_blank'>
+        <a href="https://in.linkedin.com/" target='_blank'>
           <i className="bi bi-linkedin" />
         </a>
       </div>
