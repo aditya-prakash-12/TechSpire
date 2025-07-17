@@ -64,8 +64,8 @@ function Footer() {
           </ul>
         </div>
         <div className="col-lg-2 col-md-3 footer-links">
-          <h4>Register Now</h4>
-          <div className="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://techspire-2-frontend.onrender.com/Register" alt="Register QR Code" />
+         <Link to="/Register"> <h4>Register Now</h4></Link>
+          <div className="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://techspire-2-frontend.onrender.com/Register" alt="Register QR Code" height={150}/>
 </div>
         </div>
     
