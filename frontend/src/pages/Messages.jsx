@@ -33,6 +33,15 @@ function Messages() {
      <div className="container section-title text-center" data-aos="fade-up">
           <h2>View Messages</h2>
           <p>Access all the messages from the Contact Us page.</p>
+           <div className="d-flex justify-content-center gap-3 mt-3">
+                     <Link to="/Messages"><button className="btn btn-primary">
+              View Queries
+            </button></Link>
+            <button onClick={handleLogout} className="btn btn-danger">
+              Logout
+            </button>
+           
+          </div>
         </div>
       {messages.length > 0 ? (
         <div className="table-responsive">
