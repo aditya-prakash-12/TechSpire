@@ -65,7 +65,7 @@ function Footer() {
         </div>
         <div className="col-lg-2 col-md-3 footer-links">
           <h4>Register Now</h4>
-          <div className="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://techspire-2-frontend.onrender.com/register" alt="Register QR Code" />
+          <div className="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://techspire-2-frontend.onrender.com/Register" alt="Register QR Code" />
 </div>
         </div>
     
