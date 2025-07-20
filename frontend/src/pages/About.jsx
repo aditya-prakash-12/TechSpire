@@ -13,18 +13,8 @@ function About() {
 <br /><br />
 <Venue/>
 
-<section id="sponsors" className="sponsors section dark-background">
-  {/* Section Title */}
-  <div className="container section-title" data-aos="fade-up">
-    <h2>Sponsors</h2>
-    <p>
-      Proudly supported by our esteemed sponsors who make this event possible.
-    </p>
-  </div>
-  {/* End Section Title */}
-  <Sponsors/>
-</section>
 
+ <Sponsors/>
 {/* <Footer/> */}
 
 </>  
