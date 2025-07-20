@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Venue from '../components/Venue'
 import Footer from '../components/Footer'
+import Sponsors from '../components/Sponsors'
 
 
 
@@ -21,74 +22,7 @@ function About() {
     </p>
   </div>
   {/* End Section Title */}
-  <div className="container" data-aos="fade-up" data-aos-delay={100}>
-    <div className="row g-0 clients-wrap">
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/clients/client-1.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/sponsors/logo-4.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/clients/client-3.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/sponsors/logo-3.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/sponsors/logo-2.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/clients/client-6.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/sponsors/logo-1.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-      <div className="col-xl-3 col-md-4 client-logo">
-        <img
-          src="assets/img/clients/client-8.png"
-          className="img-fluid"
-          alt=""
-        />
-      </div>
-      {/* End Client Item */}
-    </div>
-  </div>
+  <Sponsors/>
 </section>
 
 {/* <Footer/> */}

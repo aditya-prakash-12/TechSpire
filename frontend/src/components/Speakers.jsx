@@ -33,16 +33,16 @@ function Speakers() {
               <span>Chairman & CEO - Meta Platforms</span>
             </div>
             <div className="social">
-              <a href="">
+        <a href="https://x.com/" target='_blank'>
                 <i className="bi bi-twitter-x" />
               </a>
-              <a href="">
+        <a href="https://www.facebook.com/" target='_blank'>
                 <i className="bi bi-facebook" />
               </a>
-              <a href="">
+        <a href="https://www.instagram.com/" target='_blank'>
                 <i className="bi bi-instagram" />
               </a>
-              <a href="">
+        <a href="https://in.linkedin.com/" target='_blank'>
                 <i className="bi bi-linkedin" />
               </a>
             </div>
@@ -69,16 +69,16 @@ function Speakers() {
               <span>External Affairs Minister</span>
             </div>
             <div className="social">
-              <a href="">
+        <a href="https://x.com/" target='_blank'>
                 <i className="bi bi-twitter-x" />
               </a>
-              <a href="">
+        <a href="https://www.facebook.com/" target='_blank'>
                 <i className="bi bi-facebook" />
               </a>
-              <a href="">
+        <a href="https://www.instagram.com/" target='_blank'>
                 <i className="bi bi-instagram" />
               </a>
-              <a href="">
+        <a href="https://in.linkedin.com/" target='_blank'>
                 <i className="bi bi-linkedin" />
               </a>
             </div>
@@ -105,16 +105,16 @@ function Speakers() {
               <span>Founder & CEO - IBM</span>
             </div>
             <div className="social">
-              <a href="">
+        <a href="https://x.com/" target='_blank'>
                 <i className="bi bi-twitter-x" />
               </a>
-              <a href="">
+        <a href="https://www.facebook.com/" target='_blank'>
                 <i className="bi bi-facebook" />
               </a>
-              <a href="">
+        <a href="https://www.instagram.com/" target='_blank'>
                 <i className="bi bi-instagram" />
               </a>
-              <a href="">
+        <a href="https://in.linkedin.com/" target='_blank'>
                 <i className="bi bi-linkedin" />
               </a>
             </div>
@@ -141,16 +141,16 @@ function Speakers() {
               <span>Founder & President - Infosys</span>
             </div>
             <div className="social">
-              <a href="">
+        <a href="https://x.com/" target='_blank'>
                 <i className="bi bi-twitter-x" />
               </a>
-              <a href="">
+        <a href="https://www.facebook.com/" target='_blank'>
                 <i className="bi bi-facebook" />
               </a>
-              <a href="">
+        <a href="https://www.instagram.com/" target='_blank'>
                 <i className="bi bi-instagram" />
               </a>
-              <a href="">
+        <a href="https://in.linkedin.com/" target='_blank'>
                 <i className="bi bi-linkedin" />
               </a>
             </div>

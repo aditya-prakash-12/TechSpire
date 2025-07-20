@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Gallery from '../components/Gallery'
 import Speakers from '../components/Speakers'
 import Schedule from '../components/Schedule'
+import Sponsors from '../components/Sponsors'
 
 
 function Home() {
@@ -58,6 +59,7 @@ function Home() {
 </section>
 <Gallery/>
 <Speakers/>
+<Sponsors/>
 {/* <Footer/> */}
 
    </>

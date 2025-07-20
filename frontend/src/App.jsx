@@ -29,6 +29,7 @@ import OrgDashboard from './pages/OrgDashboard'
 import ScrollToTop from './components/ScrollToTop';
 import Events from './components/Events'
 import Messages from './pages/Messages'
+import Sponsors from './components/Sponsors'
 
 
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="/OrgDashboard" element={<OrgDashboard/>}/>
         <Route path="/Events" element={<Events/>}/>
         <Route path="/Messages" element={<Messages/>}/>
+        <Route path="/Sponsors" element={<Sponsors/>}/>
 
               
         
