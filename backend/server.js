@@ -95,6 +95,39 @@ app.get('/Messages', async (req, res) => {
   }
 });
 
+
+
+
+
+import multer from 'multer';
+import path from 'path';
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Make sure this folder exists on server
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // e.g., 1721979881234.jpg
+  },
+});
+
+const upload = multer({ storage });
+
+app.post('/upload-image', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+  const imageUrl = `/uploads/${req.file.filename}`;
+  res.status(200).json({ imageUrl });
+});
+
+
+app.use('/uploads', express.static('uploads'));
+
+
+
+
+
 // Organizer adds an event
 app.post("/add-event", async (req, res) => {
   try {
@@ -138,27 +171,3 @@ app.listen(port, () => {
 
 
 
-import multer from 'multer';
-import path from 'path';
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Make sure this folder exists on server
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // e.g., 1721979881234.jpg
-  },
-});
-
-const upload = multer({ storage });
-
-app.post('/upload-image', upload.single('image'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ message: 'No file uploaded' });
-  }
-  const imageUrl = `/uploads/${req.file.filename}`;
-  res.status(200).json({ imageUrl });
-});
-
-
-app.use('/uploads', express.static('uploads'));
