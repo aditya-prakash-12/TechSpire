@@ -85,8 +85,8 @@ function AllRegistrations() {
                     <th>Phone</th>
                     <th>Event</th>
                     <th>Course</th>
-                    <th>Semester</th>
-                    <th>Institution Name</th>
+                    <th>Sem</th>
+                    <th>Institution</th>
                     <th>Registered On</th>
                   </tr>
                 </thead>
