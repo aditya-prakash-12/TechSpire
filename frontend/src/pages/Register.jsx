@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,17 @@ function Register() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [eventOptions, setEventOptions] = useState([]); // ✅ Correct place
+
+  // ✅ Fetch events once on component mount
+  useEffect(() => {
+    fetch("https://techspire-2.onrender.com/events")
+      .then(res => res.json())
+      .then(data => {
+        setEventOptions(data.data || []);
+      })
+      .catch(err => console.error("Error fetching events:", err));
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,6 +62,20 @@ function Register() {
     }
 
     setIsSubmitting(false);
+  
+
+
+  
+
+    useEffect(() => {
+  fetch("https://techspire-2.onrender.com/events")
+    .then(res => res.json())
+    .then(data => {
+      setEventOptions(data.data || []);
+    })
+    .catch(err => console.error("Error fetching events:", err));
+}, []);
+
   };
 
   return (
@@ -114,12 +139,11 @@ function Register() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="" disabled>-- Select Event --</option>
-                      <option value="eSports">eSports</option>
-                      <option value="Workshops">Workshop</option>
-                      <option value="Hackathon">Hackathon</option>
-                      <option value="Tech Quiz">Tech Quiz</option>
-                      <option value="Treasure Hunt">Treasure Hunt</option>
+                     <option value="" disabled>-- Select Event --</option>
+  {eventOptions.map((event, index) => (
+    <option key={index} value={event.title}>
+      {event.title}
+    </option>))}
                     </select>
                   </div>
                 </div>
