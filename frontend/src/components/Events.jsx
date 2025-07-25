@@ -13,7 +13,7 @@ function Events() {
 
   return (
     <section id="events" className="events section py-5">
-      <div className="container text-center mb-5" data-aos="fade-up">
+      <div className="container section-title text-center mb-5" data-aos="fade-up">
         <h2>Our Events</h2>
         <p className="section-subtitle">Explore, Engage, Excel</p>
       </div>
