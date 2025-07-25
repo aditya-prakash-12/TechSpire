@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 function AllRegistrations() {
   const [registrations, setRegistrations] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState('All Events');
+  const [availableEvents, setAvailableEvents] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ function AllRegistrations() {
       navigate('/OrgLogin');
     } else {
       fetchRegistrations();
+      fetchEvents();
     }
   }, []);
 
@@ -29,6 +31,19 @@ function AllRegistrations() {
       console.error('Error fetching registrations:', error);
     }
   };
+
+  const fetchEvents = async () => {
+  try {
+    const res = await fetch('https://techspire-2.onrender.com/events');
+    const data = await res.json();
+    if (data.message === 'success') {
+      const eventNames = data.data.map(event => event.title);
+      setAvailableEvents(eventNames);
+    }
+  } catch (error) {
+    console.error('Error fetching events:', error);
+  }
+};
 
 
   return (
@@ -45,18 +60,17 @@ function AllRegistrations() {
         <div className="container mt-4" data-aos="fade-up" data-aos-delay="100">
           <div className="row mb-3">
             <div className="col-md-4">
-              <select
+                <select
                 className="form-select"
                 value={selectedEvent}
                 onChange={(e) => setSelectedEvent(e.target.value)}
-              >
+                >
                 <option value="All Events">All Events</option>
-                <option value="eSports">eSports</option>
-                <option value="Workshops">Workshop</option>
-                <option value="Hackathon">Hackathon</option>
-                <option value="Tech Quiz">Tech Quiz</option>
-                <option value="Treasure Hunt">Treasure Hunt</option>
-              </select>
+                {availableEvents.map((event, idx) => (
+                    <option key={idx} value={event}>{event}</option>
+                ))}
+                </select>
+
             </div>
           </div>
 
@@ -70,7 +84,9 @@ function AllRegistrations() {
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Event</th>
-                    <th>Message</th>
+                    <th>Course</th>
+                    <th>Semester</th>
+                    <th>Institution Name</th>
                     <th>Registered On</th>
                   </tr>
                 </thead>
@@ -84,7 +100,9 @@ function AllRegistrations() {
                         <td>{reg.email}</td>
                         <td>{reg.phone}</td>
                         <td>{reg.event}</td>
-                        <td>{reg.message || '-'}</td>
+                        <td>{reg.course}</td>
+                        <td>{reg.semester}</td>
+                        <td>{reg.institutionName}</td>
                         <td>{new Date(reg.createdAt).toLocaleString()}</td>
                       </tr>
                     ))}
@@ -101,4 +119,4 @@ function AllRegistrations() {
   );
 }
 
-export default AllRegistrations;
+export default AllRegistrations

@@ -6,7 +6,9 @@ const registrationSchema = new mongoose.Schema(
     email: { type: String, required: true },
     phone: { type: String, required: true },
     event: { type: String, required: true },
-    message: { type: String }
+    course: {type: String, required: true},
+     semester: { type: String, required: true },
+    institutionName: { type: String, required: true }
   },
   { timestamps: true }
 );

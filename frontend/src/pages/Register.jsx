@@ -51,7 +51,9 @@ function Register() {
           email: '',
           phone: '',
           event: '',
-          message: ''
+          course: '',
+          semester: '',
+          institutionName: ''
         });
       } else {
         alert("Failed to register. Please try again.");
@@ -140,24 +142,51 @@ function Register() {
                       required
                     >
                      <option value="" disabled>-- Select Event --</option>
-  {eventOptions.map((event, index) => (
-    <option key={index} value={event.title}>
-      {event.title}
-    </option>))}
+                    {eventOptions.map((event, index) => (
+                      <option key={index} value={event.title}>
+                        {event.title}
+                      </option>))}
                     </select>
                   </div>
                 </div>
 
-                <div className="form-group mb-3">
-                  <textarea
-                    name="message"
-                    className="form-control"
-                    rows="4"
-                    placeholder="Additional Message (optional)"
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </div>
+                <div className="row">
+              <div className="col-md-6 form-group mb-3">
+                <input
+                  type="text"
+                  name="course"
+                  className="form-control"
+                  placeholder="Your Course"
+                  value={formData.course}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="col-md-6 form-group mb-3">
+                <input
+                  type="text"
+                  name="semester"
+                  className="form-control"
+                  placeholder="Semester (e.g. 3rd)"
+                  value={formData.semester}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group mb-3">
+              <input
+                type="text"
+                name="institutionName"
+                className="form-control"
+                placeholder="Institution Name"
+                value={formData.institutionName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
 
                 <div className="text-center">
                   <button

@@ -22,7 +22,17 @@ function Events() {
         <div className="row gy-5">
           {events.map((event, index) => (
             <div className="col-12" key={index} data-aos="fade-up" data-aos-delay="100">
-              <div className={`d-flex flex-column flex-md-row ${index % 2 !== 0 ? 'flex-md-row-reverse' : ''} align-items-center shadow p-4 rounded`} style={{ background: '#121212', color: 'white' }}>
+              <div
+                  className={`d-flex flex-column flex-md-row ${index % 2 !== 0 ? 'flex-md-row-reverse' : ''} align-items-center shadow p-4 rounded`}
+                  style={{
+                    background: '#121212',
+                    color: 'white',
+                    minHeight: '320px', // Fixed minimum height
+                    height: '100%', 
+                    overflow: 'hidden'
+                  }}
+                >
+
                 
                 <div className="col-md-5 text-center mb-3 mb-md-0">
                   <img
@@ -40,7 +50,9 @@ function Events() {
 
                 <div className="col-md-7 ps-md-4">
                   <h3 className="fw-bold">{event.title}</h3>
-                  <p className="mb-2">{event.description}</p>
+                <p className="mb-2" style={{ maxHeight: '80px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',overflowY: "hidden", textOverflow:"ellipsis" }}>
+                  {event.description}
+                </p>
                   <p className="mb-1"><strong>Date:</strong> {event.date}</p>
                   <p className="mb-1"><strong>Time:</strong> {event.time}</p>
                   <p className="mb-3"><strong>Venue:</strong> {event.venue}</p>

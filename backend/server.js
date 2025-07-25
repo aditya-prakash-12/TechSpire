@@ -23,14 +23,16 @@ app.use(cors());
 // Event Registration API
 app.post("/create", async (req, res) => {
   try {
-    const { name, email, phone, event, message } = req.body;
+    const { name, email, phone, event,  course, semester, institutionName } = req.body;
 
     const newUser = new RegistrationModel({
       name,
       email,
       phone,
       event,
-      message,
+      course,
+      semester,
+      institutionName
     });
 
     const savedUser = await newUser.save();
