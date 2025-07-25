@@ -30,6 +30,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Events from './components/Events'
 import Messages from './pages/Messages'
 import Sponsors from './components/Sponsors'
+import AddEvent from './pages/AddEvent'
 
 
 
@@ -46,7 +47,7 @@ function App() {
     <>
     <Router>
       <ScrollToTop/>
-      <Navbar/>
+
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/Contact" element={<Contact/>}/>
@@ -67,11 +68,12 @@ function App() {
         <Route path="/Events" element={<Events/>}/>
         <Route path="/Messages" element={<Messages/>}/>
         <Route path="/Sponsors" element={<Sponsors/>}/>
+        <Route path="/AddEvent" element={<AddEvent/>}/>
 
               
         
       </Routes>
-      <Footer/>
+
     </Router>
     </>
   )

@@ -38,7 +38,7 @@ function Check() {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <br /><br />
       <section id="check-registration" className="section">
         <div className="container section-title" data-aos="fade-up">
@@ -103,7 +103,7 @@ function Check() {
           </div>
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

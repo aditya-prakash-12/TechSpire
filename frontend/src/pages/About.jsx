@@ -9,13 +9,13 @@ import Sponsors from '../components/Sponsors'
 function About() {
   return (
 <>
-{/* <Navbar/> */}
+<Navbar/>
 <br /><br />
 <Venue/>
 
 
  <Sponsors/>
-{/* <Footer/> */}
+<Footer/>
 
 </>  
 )

@@ -190,3 +190,11 @@
   color: #6c757d;
 }
 
+
+
+
+
+#add-event .btn-primary:hover {
+  background-color: #084298;
+  border-color: #084298;
+}

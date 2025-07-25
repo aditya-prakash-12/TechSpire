@@ -7,7 +7,7 @@ import Contact from '../components/Contact'
 function ContactPage() {
   return (
     <>
-{/* <Navbar/> */}
+<Navbar/>
 <br /><br />
     <section id="contact" className="contact section ">
   {/* Section Title */}
@@ -75,7 +75,7 @@ function ContactPage() {
   </div>
 </section>
 <Faq/>
-{/* <Footer/> */}
+<Footer/>
 </>
   )
 }

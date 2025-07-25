@@ -11,7 +11,7 @@ import Sponsors from '../components/Sponsors'
 function Home() {
   return (
    <>
-   {/* <Navbar/> */}
+   <Navbar/>
    <section id="hero" className="hero section dark-background">
   <img src="/assets/img/hero-bg.jpg" alt="" data-aos="fade-in" />
   <div className="container d-flex flex-column align-items-center text-center mt-auto">
@@ -60,7 +60,7 @@ function Home() {
 <Gallery/>
 <Speakers/>
 <Sponsors/>
-{/* <Footer/> */}
+<Footer/>
 
    </>
   )

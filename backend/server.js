@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./database.js";
 import RegistrationModel from "./models/RegistrationModel.js";
 import ContactModel from "./models/ContactModel.js";
+import EventModel from "./models/EventModel.js";
 
 dotenv.config();
 connectDB();
@@ -15,6 +16,27 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
+
+import multer from 'multer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    const uniqueName = Date.now() + '-' + file.originalname;
+    cb(null, uniqueName);
+  },
+});
+const upload = multer({ storage });
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Event Registration API
 app.post("/create", async (req, res) => {
@@ -91,7 +113,50 @@ app.get('/Messages', async (req, res) => {
   }
 });
 
+// Organizer adds an event
+app.post("/add-event", async (req, res) => {
+  try {
+    const { title, description, date, time, venue } = req.body;
+   const image = req.body.image || '';
+
+
+    const newEvent = new EventModel({
+      title,
+      description,
+      image,
+      date,
+      time,
+      venue,
+    });
+
+    const savedEvent = await newEvent.save();
+    res.status(201).json({ message: "Event added successfully", data: savedEvent });
+  } catch (error) {
+    res.status(400).json({ message: "Failed to add event", error: error.message });
+  }
+});
+
+// Fetch all events
+app.get("/events", async (req, res) => {
+  try {
+    const events = await EventModel.find().sort({ createdAt: -1 });
+    res.status(200).json({ message: "success", data: events });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch events", error: error.message });
+  }
+});
+
+
+
+
 // Start Server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
+});
+
+
+// Upload image endpoint
+app.post("/upload-image", upload.single('image'), (req, res) => {
+  const imageUrl = `/uploads/${req.file.filename}`;
+  res.status(200).json({ imageUrl });
 });

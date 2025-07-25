@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
+import OrgNav from '../components/OrgNav';
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -33,20 +35,13 @@ function Messages() {
 
   return (
     <>
+    <OrgNav/>
     <br /> <br/>
     <div className="container mt-5">
      <div className="container section-title text-center" data-aos="fade-up">
           <h2>View Messages</h2>
           <p>Access all the messages from the Contact Us page.</p>
-           <div className="d-flex justify-content-center gap-3 mt-3">
-                     <Link to="/OrgDashboard"><button className="btn btn-primary">
-              View Registrations
-            </button></Link>
-            <button onClick={handleLogout} className="btn btn-danger">
-              Logout
-            </button>
            
-          </div>
         </div>
       {messages.length > 0 ? (
         <div className="table-responsive">
@@ -88,6 +83,7 @@ function Messages() {
         <p className="text-center">No messages found.</p>
       )}
     </div>
+    <Footer/>
     </>
   );
 }

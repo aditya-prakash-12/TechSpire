@@ -55,7 +55,7 @@ function Register() {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <br /><br />
       <section id="register" className="register section">
         <div className="container section-title" data-aos="fade-up">
@@ -157,7 +157,7 @@ function Register() {
   </Link>
 </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

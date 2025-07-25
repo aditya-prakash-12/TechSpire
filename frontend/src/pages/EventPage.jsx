@@ -9,14 +9,14 @@ import Events from '../components/Events'
 function EventPage() {
   return (
    <>
-   {/* <Navbar/> */}
+   <Navbar/>
    <br />
    <br />
    <Events/>
    <Schedule/>
    <Speakers/>
   
-   {/* <Footer/> */}
+   <Footer/>
    </>
   )
 }

@@ -26,7 +26,7 @@ function OrgLogin() {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <br /><br />
       <section className="section">
         <div className="container section-title text-center" data-aos="fade-up">
@@ -69,7 +69,7 @@ function OrgLogin() {
           </div>
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import OrgNav from '../components/OrgNav';
+import Footer from '../components/Footer';
 
 function OrgDashboard() {
   const [registrations, setRegistrations] = useState([]);
@@ -28,28 +30,16 @@ function OrgDashboard() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isOrganizer');
-    navigate('/');
-  };
 
   return (
     <>
-      {/* <Navbar /> */}
+    <OrgNav/>
       <br /><br />
       <section className="section">
         <div className="container section-title text-center" data-aos="fade-up">
           <h2>All Event Registrations</h2>
           <p>View all users who have registered for events.</p>
-         <div className="d-flex justify-content-center gap-3 mt-3">
-           <Link to="/Messages"><button className="btn btn-primary">
-    View Queries
-  </button></Link>
-  <button onClick={handleLogout} className="btn btn-danger">
-    Logout
-  </button>
- 
-</div>
+        
         </div>
 
         <div className="container mt-4" data-aos="fade-up" data-aos-delay="100">
@@ -106,7 +96,7 @@ function OrgDashboard() {
           )}
         </div>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
