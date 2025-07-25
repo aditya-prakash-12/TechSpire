@@ -31,6 +31,11 @@ function OrgNav() {
           <ul>
             <li>
               <NavLink to="/OrgDashboard" end className={({ isActive }) => isActive ? 'active' : ''} onClick={toggleMobileNav}>
+                Events
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/AllRegistrations" end className={({ isActive }) => isActive ? 'active' : ''} onClick={toggleMobileNav}>
                 Registrations
               </NavLink>
             </li>

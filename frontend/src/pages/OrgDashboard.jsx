@@ -1,102 +1,98 @@
 import React, { useEffect, useState } from 'react';
+import EditEventModal from './EditEventModal';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import OrgNav from '../components/OrgNav';
 import Footer from '../components/Footer';
 
 function OrgDashboard() {
-  const [registrations, setRegistrations] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState('All Events');
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const isOrganizer = localStorage.getItem('isOrganizer');
-    if (!isOrganizer) {
-      navigate('/OrgLogin');
-    } else {
-      fetchRegistrations();
-    }
-  }, []);
-
-  const fetchRegistrations = async () => {
-    try {
-      const res = await fetch('https://techspire-2.onrender.com/all-registrations');
-      const data = await res.json();
-      if (data.message === 'success') {
-        setRegistrations(data.data);
+   useEffect(() => {
+      const isOrganizer = localStorage.getItem('isOrganizer');
+      if (!isOrganizer) {
+        navigate('/OrgLogin');
+      } else {
+        fetchEvents();
       }
-    } catch (error) {
-      console.error('Error fetching registrations:', error);
-    }
+    }, []);
+  
+
+  const fetchEvents = async () => {
+    const res = await fetch("https://techspire-2.onrender.com/events");
+    const data = await res.json();
+    setEvents(data.data || []);
   };
 
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const handleDelete = async (id) => {
+    const confirm = window.confirm("Are you sure you want to delete this event?");
+    if (!confirm) return;
+
+    const res = await fetch(`https://techspire-2.onrender.com/delete-event/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await res.json();
+    alert(data.message);
+    fetchEvents();
+  };
+
+  const handleEditSave = async (updatedEvent) => {
+    const res = await fetch(`https://techspire-2.onrender.com/update-event/${updatedEvent._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updatedEvent),
+    });
+
+    const data = await res.json();
+    alert(data.message);
+    fetchEvents();
+  };
 
   return (
     <>
     <OrgNav/>
-      <br /><br />
-      <section className="section">
-        <div className="container section-title text-center" data-aos="fade-up">
-          <h2>All Event Registrations</h2>
-          <p>View all users who have registered for events.</p>
-        
-        </div>
-
-        <div className="container mt-4" data-aos="fade-up" data-aos-delay="100">
-          <div className="row mb-3">
-            <div className="col-md-4">
-              <select
-                className="form-select"
-                value={selectedEvent}
-                onChange={(e) => setSelectedEvent(e.target.value)}
-              >
-                <option value="All Events">All Events</option>
-                <option value="eSports">eSports</option>
-                <option value="Workshops">Workshop</option>
-                <option value="Hackathon">Hackathon</option>
-                <option value="Tech Quiz">Tech Quiz</option>
-                <option value="Treasure Hunt">Treasure Hunt</option>
-              </select>
+   
+    <div className="container section-title py-5">
+      <h2 className="text-center mt-5 mb-5 ">Manage Events</h2>
+      <div className="row gy-4">
+        {events.map((event) => (
+          <div className="col-md-6" key={event._id}>
+            <div className="p-4 rounded shadow text-white" style={{ backgroundColor: "#121212" }}>
+              <img src={`https://techspire-2.onrender.com${event.image}`} className="img-fluid rounded mb-3" style={{ maxHeight: "250px", width: "100%", objectFit: "cover" }} alt={event.title} />
+              <h4>{event.title}</h4>
+              <p>{event.description}</p>
+              <p><strong>Date:</strong> {event.date} | <strong>Time:</strong> {event.time}</p>
+              <p><strong>Venue:</strong> {event.venue}</p>
+              <div className="d-flex justify-content-between">
+                <button className="btn  btn-outline-light" onClick={() => { setSelectedEvent(event); setShowModal(true); }}>Edit</button>
+                <button className="btn btn-danger" onClick={() => handleDelete(event._id)}>Delete</button>
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+      
 
-          {registrations.length > 0 ? (
-            <div className="table-responsive">
-              <table className="table table-bordered table-striped">
-                <thead className="table-dark">
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Event</th>
-                    <th>Message</th>
-                    <th>Registered On</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {registrations
-                    .filter((reg) => selectedEvent === 'All Events' || reg.event === selectedEvent)
-                    .map((reg, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{reg.name}</td>
-                        <td>{reg.email}</td>
-                        <td>{reg.phone}</td>
-                        <td>{reg.event}</td>
-                        <td>{reg.message || '-'}</td>
-                        <td>{new Date(reg.createdAt).toLocaleString()}</td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-center">No registrations found.</p>
-          )}
-        </div>
-      </section>
-      <Footer />
+      {showModal && (
+        <EditEventModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          eventData={selectedEvent}
+          onSave={handleEditSave}
+        />
+      )}
+    </div>
+
+    <Footer/>
     </>
   );
 }

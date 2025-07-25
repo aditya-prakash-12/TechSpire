@@ -198,3 +198,14 @@
   background-color: #084298;
   border-color: #084298;
 }
+
+
+.modal-content {
+  background-color: rgba(220, 20, 60, 0.8);
+  color: white;
+  border-radius: 10px;
+}
+.modal-header,
+.modal-footer {
+  border: none;
+}

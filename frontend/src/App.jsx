@@ -31,6 +31,7 @@ import Events from './components/Events'
 import Messages from './pages/Messages'
 import Sponsors from './components/Sponsors'
 import AddEvent from './pages/AddEvent'
+import AllRegistrations from './pages/AllRegistrations'
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/Messages" element={<Messages/>}/>
         <Route path="/Sponsors" element={<Sponsors/>}/>
         <Route path="/AddEvent" element={<AddEvent/>}/>
+        <Route path="/AllRegistrations" element={<AllRegistrations/>}/>
 
               
         

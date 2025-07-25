@@ -170,4 +170,22 @@ app.listen(port, () => {
 });
 
 
+// Update Event
+app.put('/update-event/:id', async (req, res) => {
+  try {
+    const updated = await EventModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.status(200).json({ message: 'Event updated successfully', data: updated });
+  } catch (error) {
+    res.status(500).json({ message: 'Update failed', error: error.message });
+  }
+});
 
+// Delete Event
+app.delete('/delete-event/:id', async (req, res) => {
+  try {
+    await EventModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: 'Event deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Delete failed', error: error.message });
+  }
+});
