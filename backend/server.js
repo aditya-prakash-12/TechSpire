@@ -17,25 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-import multer from 'multer';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + '-' + file.originalname;
-    cb(null, uniqueName);
-  },
-});
-const upload = multer({ storage });
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // Event Registration API
@@ -155,8 +137,28 @@ app.listen(port, () => {
 });
 
 
-// Upload image endpoint
-app.post("/upload-image", upload.single('image'), (req, res) => {
+
+import multer from 'multer';
+import path from 'path';
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // Make sure this folder exists on server
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // e.g., 1721979881234.jpg
+  },
+});
+
+const upload = multer({ storage });
+
+app.post('/upload-image', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
   const imageUrl = `/uploads/${req.file.filename}`;
   res.status(200).json({ imageUrl });
 });
+
+
+app.use('/uploads', express.static('uploads'));
