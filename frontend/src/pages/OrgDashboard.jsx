@@ -61,15 +61,24 @@ function OrgDashboard() {
     <>
     <OrgNav/>
    
-    <div className="container section-title py-5">
-      <h2 className="text-center mt-5 mb-5 ">Manage Events</h2>
+    <div className="container section-title py-5" data-aos="fade-up">
+      <h2 className="text-center mt-5 mb-5 " >Manage Events</h2>
       <div className="row gy-4">
         {events.map((event) => (
           <div className="col-md-6" key={event._id}>
-            <div className="p-4 rounded shadow text-white" style={{ backgroundColor: "#121212" }}>
+          <div
+            className="p-4 rounded shadow text-white d-flex flex-column justify-content-between"
+            style={{
+              backgroundColor: "#121212",
+              minHeight: "460px", // ✅ Fixed min height
+              height: "100%",
+            }}
+          >
               <img src={`https://techspire-2.onrender.com${event.image}`} className="img-fluid rounded mb-3" style={{ maxHeight: "250px", width: "100%", objectFit: "cover" }} alt={event.title} />
               <h4>{event.title}</h4>
-              <p>{event.description}</p>
+            <p style={{ maxHeight: "100px", display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',overflowY: "hidden", textOverflow:"ellipsis" }}>
+              {event.description}
+            </p>
               <p><strong>Date:</strong> {event.date} | <strong>Time:</strong> {event.time}</p>
               <p><strong>Venue:</strong> {event.venue}</p>
               <div className="d-flex justify-content-between">

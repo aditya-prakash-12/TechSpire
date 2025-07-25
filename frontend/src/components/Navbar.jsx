@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
@@ -8,6 +9,14 @@ function Navbar() {
   const toggleMobileNav = () => {
     setIsMobileNavActive((prev) => !prev);
   };
+
+   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1200);
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth < 1200);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const isHomePage = location.pathname === '/';
 
@@ -49,7 +58,7 @@ function Navbar() {
               </NavLink>
             </li>
 
-            {isMobileNavActive && (
+            {isMobileView && isMobileNavActive && (
             <Link
               to="/Register"
               className="cta-btn d-block d-xl-none text-white text-center mt-3"
@@ -74,10 +83,11 @@ function Navbar() {
             
 
         </nav>
-
-        <Link className="cta-btn d-none d-xl-block " to="/Register">
+          {!isMobileView && (
+        <Link className="cta-btn   " to="/Register">
           Register
         </Link>
+        )}
       </div>
     </header>
   );

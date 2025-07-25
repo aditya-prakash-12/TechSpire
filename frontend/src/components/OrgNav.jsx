@@ -1,9 +1,21 @@
+
+
 import React, { useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function OrgNav() {
   const [isMobileNavActive, setIsMobileNavActive] = useState(false);
   const location = useLocation();
+
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 1200);
+
+useEffect(() => {
+  const handleResize = () => setIsMobileView(window.innerWidth < 1200);
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
 
   const toggleMobileNav = () => {
     setIsMobileNavActive((prev) => !prev);
@@ -51,7 +63,7 @@ function OrgNav() {
             </li>
             
 
-            {isMobileNavActive && (
+            {isMobileView && isMobileNavActive && (
             <Link to="/">
               <button onClick={handleLogout} className="btn btn-danger">Logout</button>
             </Link>
@@ -72,9 +84,12 @@ function OrgNav() {
 
         </nav>
 
-        <Link to="/">
-              <button onClick={handleLogout} className="btn btn-danger mx-3">Logout</button>
-            </Link>
+        {!isMobileView && (
+  <Link to="/">
+    <button onClick={handleLogout} className="btn btn-danger mx-3">Logout</button>
+  </Link>
+)}
+
       </div>
     </header>
   );
