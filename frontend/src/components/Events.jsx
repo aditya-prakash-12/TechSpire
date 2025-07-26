@@ -52,7 +52,7 @@ function Events() {
                 </div>
 
                 <div className="col-md-7 ps-md-4">
-                  <h3 className="fw-bold">{event.title}</h3>
+                  <h3 className="fw-bold" style={{textShadow:'0px 0px 3px white'}}>{event.title}</h3>
                 <p className="mb-2" style={{ maxHeight: '80px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',overflowY: "hidden", textOverflow:"ellipsis" }}>
                   {event.description}
                 </p>
