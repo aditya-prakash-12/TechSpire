@@ -99,20 +99,17 @@ app.get('/Messages', async (req, res) => {
 
 
 
-
-
 import multer from 'multer';
-import path from 'path';
 import cloudinary from './utils/cloudinary.js';
 
+// Memory storage (since Cloudinary accepts buffers)
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-
+// Upload endpoint
 app.post('/upload-image', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
-      // No file uploaded, return fallback image
       return res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
     }
 
@@ -120,7 +117,6 @@ app.post('/upload-image', upload.single('image'), async (req, res) => {
       { folder: 'techspire-events' },
       (error, result) => {
         if (error) {
-          // Cloudinary upload failed, fallback
           return res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
         }
         res.status(200).json({ imageUrl: result.secure_url });
@@ -132,6 +128,7 @@ app.post('/upload-image', upload.single('image'), async (req, res) => {
     res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
   }
 });
+
 
 
 

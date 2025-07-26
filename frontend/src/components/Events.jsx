@@ -36,7 +36,7 @@ function Events() {
                 
                 <div className="col-md-5 text-center mb-3 mb-md-0">
                   <img
-                    src={event.image || 'https://res.cloudinary.com/dgggfmllp/image/upload/v17123456/default_event.jpg'}
+                    src={ event.image || 'https://res.cloudinary.com/dgggfmllp/image/upload/v1753543105/default_event.jpg'}
                     className="img-fluid rounded"
                     alt={event.title}
                     style={{
@@ -45,6 +45,9 @@ function Events() {
                       width: '100%',
                       boxShadow: '0 0 20px rgba(220, 20, 60, 0.6)' // Crimson box-shadow
                     }}
+                    onError={(e) => {
+    e.target.src = 'https://res.cloudinary.com/dgggfmllp/image/upload/v1753543105/default_event.jpg';
+  }}
                   />
                 </div>
 

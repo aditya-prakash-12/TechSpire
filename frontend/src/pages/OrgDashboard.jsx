@@ -74,7 +74,7 @@ function OrgDashboard() {
               height: "100%",
             }}
           >
-              <img src={`https://techspire-2.onrender.com${event.image}`} className="img-fluid rounded mb-3" style={{ maxHeight: "250px", width: "100%", objectFit: "cover" }} alt={event.title} />
+              <img src={event.image || 'https://res.cloudinary.com/dgggfmllp/image/upload/v1753543105/default_event.jpg'} className="img-fluid rounded mb-3" style={{ maxHeight: "250px", width: "100%", objectFit: "cover" }} alt={event.title} />
               <h4>{event.title}</h4>
             <p style={{ maxHeight: "100px", display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',overflowY: "hidden", textOverflow:"ellipsis" }}>
               {event.description}
