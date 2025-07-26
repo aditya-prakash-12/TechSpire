@@ -36,7 +36,7 @@ function Events() {
                 
                 <div className="col-md-5 text-center mb-3 mb-md-0">
                   <img
-                    src={event.image}
+                    src={event.image || 'https://res.cloudinary.com/dgggfmllp/image/upload/v17123456/default_event.jpg'}
                     className="img-fluid rounded"
                     alt={event.title}
                     style={{

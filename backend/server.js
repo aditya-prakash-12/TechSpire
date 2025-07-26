@@ -135,7 +135,6 @@ app.post('/upload-image', upload.single('image'), async (req, res) => {
 
 
 
-app.use('/uploads', express.static('uploads'));
 
 
 

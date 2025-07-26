@@ -8,8 +8,7 @@ function AddEvent() {
     description: '',
     date: '',
     time: '',
-    venue: '',
-    image: '', // Will be set after upload
+    venue: ''
   });
 
   
@@ -43,7 +42,7 @@ function AddEvent() {
         });
 
        const uploadData = await uploadRes.json();
-imageUrl = uploadData.imageUrl || process.env.DEFAULT_EVENT_IMAGE;
+imageUrl = uploadData.imageUrl || 'https://res.cloudinary.com/your_cloud_name/image/upload/v17123456/default_event.jpg';
 // Returned from backend
       }
 
