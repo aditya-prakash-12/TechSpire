@@ -12,6 +12,8 @@ function AddEvent() {
     image: '', // Will be set after upload
   });
 
+  
+
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -40,8 +42,9 @@ function AddEvent() {
           body: imgFormData,
         });
 
-        const uploadData = await uploadRes.json();
-        imageUrl = uploadData.imageUrl; // Returned from backend
+       const uploadData = await uploadRes.json();
+imageUrl = uploadData.imageUrl || process.env.DEFAULT_EVENT_IMAGE;
+// Returned from backend
       }
 
       // Step 2: Submit Event Data

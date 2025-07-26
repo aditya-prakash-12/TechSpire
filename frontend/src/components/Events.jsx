@@ -36,7 +36,7 @@ function Events() {
                 
                 <div className="col-md-5 text-center mb-3 mb-md-0">
                   <img
-                    src={`https://techspire-2.onrender.com${event.image}`}
+                    src={event.image}
                     className="img-fluid rounded"
                     alt={event.title}
                     style={{

@@ -103,25 +103,36 @@ app.get('/Messages', async (req, res) => {
 
 import multer from 'multer';
 import path from 'path';
+import cloudinary from './utils/cloudinary.js';
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Make sure this folder exists on server
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // e.g., 1721979881234.jpg
-  },
-});
-
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-app.post('/upload-image', upload.single('image'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ message: 'No file uploaded' });
+
+app.post('/upload-image', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      // No file uploaded, return fallback image
+      return res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
+    }
+
+    const stream = cloudinary.uploader.upload_stream(
+      { folder: 'techspire-events' },
+      (error, result) => {
+        if (error) {
+          // Cloudinary upload failed, fallback
+          return res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
+        }
+        res.status(200).json({ imageUrl: result.secure_url });
+      }
+    );
+
+    stream.end(req.file.buffer);
+  } catch (error) {
+    res.status(200).json({ imageUrl: process.env.DEFAULT_EVENT_IMAGE });
   }
-  const imageUrl = `/uploads/${req.file.filename}`;
-  res.status(200).json({ imageUrl });
 });
+
 
 
 app.use('/uploads', express.static('uploads'));
