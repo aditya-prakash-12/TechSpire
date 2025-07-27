@@ -59,7 +59,7 @@ function Events() {
                   <p className="mb-1"><strong>Date:</strong> {event.date}</p>
                   <p className="mb-1"><strong>Time:</strong> {event.time}</p>
                   <p className="mb-3"><strong>Venue:</strong> {event.venue}</p>
-                  <Link to="/Register">
+                  <Link to="/Register" state={{ selectedEvent: event.title }}>
                     <button className="btn btn-outline-light px-4">Register</button>
                   </Link>
                 </div>

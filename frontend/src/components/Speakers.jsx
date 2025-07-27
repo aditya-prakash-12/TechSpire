@@ -28,7 +28,7 @@ function Speakers() {
           <div className="member-info">
             <div className="member-info-content">
               <h4>
-                <a href="speaker-details.html">Mark Zuckerberg</a>
+                Mark Zuckerberg
               </h4>
               <span>Chairman & CEO - Meta Platforms</span>
             </div>
@@ -64,7 +64,7 @@ function Speakers() {
           <div className="member-info">
             <div className="member-info-content">
               <h4>
-                <a href="speaker-details.html">Dr. S. Jaishankar</a>
+                Dr. S. Jaishankar
               </h4>
               <span>External Affairs Minister</span>
             </div>
@@ -100,7 +100,7 @@ function Speakers() {
           <div className="member-info">
             <div className="member-info-content">
               <h4>
-                <a href="speaker-details.html">Dr. S. Jyoti</a>
+                Dr. S. Jyoti
               </h4>
               <span>Founder & CEO - IBM</span>
             </div>
@@ -136,7 +136,7 @@ function Speakers() {
           <div className="member-info">
             <div className="member-info-content">
               <h4>
-                <a href="speaker-details.html">Mr. Narayan Murthy</a>
+                Mr. Narayan Murthy
               </h4>
               <span>Founder & President - Infosys</span>
             </div>

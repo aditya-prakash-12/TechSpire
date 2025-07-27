@@ -2,20 +2,26 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function Register() {
+  
+  const location = useLocation();
+const selectedEvent = location.state?.selectedEvent || '';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    event: '',
+    event: selectedEvent,
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [eventOptions, setEventOptions] = useState([]); // ✅ Correct place
+  const [eventOptions, setEventOptions] = useState([]);
 
-  // ✅ Fetch events once on component mount
+
+  //  Fetch events once on component mount
   useEffect(() => {
     fetch("https://techspire-2.onrender.com/events")
       .then(res => res.json())
@@ -28,6 +34,8 @@ function Register() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +87,8 @@ function Register() {
 }, []);
 
   };
+
+
 
   return (
     <>
